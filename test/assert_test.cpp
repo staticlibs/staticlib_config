@@ -34,7 +34,9 @@ namespace sc = staticlib::config;
 void test_assert() {
     bool catched = false;
     try {
-        slassert(1 < 0);
+        int a = 0;
+        int b = 1;
+        slassert(a > b);
     } catch (const sc::AssertException&) {
         catched = true;
     }
