@@ -8,7 +8,7 @@ add features missed on some platforms.
 
 This library is header-only.
 
-Link to [API documentation](http://staticlibs.github.io/staticlib_config/docs/html/namespacestaticlib_1_1config.html).
+Link to the [API documentation](http://staticlibs.github.io/staticlib_config/docs/html/namespacestaticlib_1_1config.html).
 
 Features
 --------
