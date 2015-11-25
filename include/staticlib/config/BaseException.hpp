@@ -24,8 +24,8 @@
 #ifndef STATICLIB_CONFIG_BASEEXCEPTION_HPP
 #define	STATICLIB_CONFIG_BASEEXCEPTION_HPP
 
-#include <string>
 #include <exception>
+#include <string>
 
 #include "staticlib/config/noexcept.hpp"
 
