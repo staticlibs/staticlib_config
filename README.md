@@ -6,7 +6,7 @@ This project is a part of [Staticlibs](http://staticlibs.net/).
 This project contains a number of headers to detect operating system and to 
 add features missed on some platforms.
 
-This library is header-only.
+This library is header-only and has no dependencies.
 
 Link to the [API documentation](http://staticlibs.github.io/staticlib_config/docs/html/namespacestaticlib_1_1config.html).
 
