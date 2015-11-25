@@ -23,8 +23,8 @@
 
 #include "staticlib/config/tracemsg.hpp"
 
-#include <string>
 #include <iostream>
+#include <string>
 
 #include "staticlib/config/to_string.hpp"
 #include "staticlib/config/assert.hpp"

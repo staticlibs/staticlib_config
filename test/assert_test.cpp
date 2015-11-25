@@ -24,8 +24,8 @@
 #include "staticlib/config/assert.hpp"
 
 #include <iostream>
-#include <string>
 #include <stdexcept>
+#include <string>
 
 #include "staticlib/config/BaseException.hpp"
 
