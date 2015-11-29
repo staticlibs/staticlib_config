@@ -44,7 +44,7 @@ namespace config {
  * @param line current line in source file, `__LINE__` macro is used in `TRACEMSG` macro
  * @return message string prepended with specified data
  */
-std::string tracemsg(const std::string& message, const std::string& file, const std::string& func, int line) {
+inline std::string tracemsg(const std::string& message, const std::string& file, const std::string& func, int line) {
     // cleanup function name
     auto paren_ind = func.find("(");    
     auto fun_end_pos = std::string::npos != paren_ind ? paren_ind : message.length();
