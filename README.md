@@ -73,6 +73,11 @@ This project is released under the [Apache License 2.0](http://www.apache.org/li
 Changelog
 ---------
 
+**2016-01-16**
+
+ * version 1.0.1
+ * minor CMake changes
+
 **2015-11-21**
 
  * version 1.0.0
