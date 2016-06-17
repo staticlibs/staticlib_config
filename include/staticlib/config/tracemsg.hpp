@@ -29,7 +29,7 @@
 #include "staticlib/config/current_function.hpp"
 #include "staticlib/config/to_string.hpp"
 
-#define TRACEMSG(message) staticlib::config::tracemsg(message, __FILE__, STATICLIB_CURRENT_FUNCTION, __LINE__)
+#define TRACEMSG(message) staticlib::config::tracemsg(std::string() + message, __FILE__, STATICLIB_CURRENT_FUNCTION, __LINE__)
 
 namespace staticlib {
 namespace config {
