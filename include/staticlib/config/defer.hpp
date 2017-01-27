@@ -73,9 +73,11 @@ public:
      * Destructor, will execute lambda function
      */
     ~defer_guard() STATICLIB_NOEXCEPT {
+#ifdef STATICLIB_NOEXCEPT_SUPPORTED
         static_assert(noexcept(func()),
                 "Please check that the defer block cannot throw, "
                 "and mark the lambda as noexcept.");
+#endif
         func();
     }
 };

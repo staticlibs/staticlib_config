@@ -28,6 +28,7 @@
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 #define STATICLIB_NOEXCEPT noexcept
 #define STATICLIB_NOEXCEPT_FALSE noexcept(false)
+#define STATICLIB_NOEXCEPT_SUPPORTED
 #else
 #define STATICLIB_NOEXCEPT
 #define STATICLIB_NOEXCEPT_FALSE
