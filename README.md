@@ -38,10 +38,6 @@ Implements `to_string` template that calls `std::to_string` on all supported pla
 where `std::to_string` is missed for some versions of NDK. `std::stringstream` implementation
 is used for Android.
 
-####unique_ptr factory function
-
-Implements `make_unique` variadic template that is missed on C++11 compilers.
-
 ####BaseException
 
 Exception class that extends `std::exception` and implements constructor that takes `std::string`
