@@ -44,10 +44,21 @@ std::string to_string(const T& obj) {
 #ifndef STATICLIB_ANDROID
     return std::to_string(obj);
 #else     
+    return to_string_any(obj);
+#endif // STATICLIB_ANDROID
+}
+
+/**
+ * Generic `to_string` implementation
+ * 
+ * @param obj object to stringify
+ * @return string representation of specified value
+ */
+template<typename T>
+std::string to_string_any(const T& obj) {
     std::stringstream ss{};
     ss << obj;
     return ss.str();
-#endif // STATICLIB_ANDROID
 }
 
 } // namespace

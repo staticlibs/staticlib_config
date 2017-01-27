@@ -32,31 +32,30 @@ namespace sc = staticlib::config;
 
 void test_to_string() {
     slassert("42" == sc::to_string(42));
-//    slassert("42" == sc::to_string(std::string{"42"}));
+    slassert("42" == sc::to_string_any(std::string{"42"}));
 }
 
-// doesn't work with std::to_string
-//class BadExternalClass {
-//    friend std::ostream &operator<<(std::ostream&, const BadExternalClass&) {
-//        throw std::runtime_error("");
-//    }
-//};
-//
-//void test_to_string_exception() {
-//    bool catched = false;
-//    try {
-//        BadExternalClass bc{};
-//        sc::to_string(bc);
-//    } catch (const std::runtime_error&) {
-//        catched = true;
-//    }
-//    slassert(catched);
-//}
+class BadExternalClass {
+    friend std::ostream &operator<<(std::ostream&, const BadExternalClass&) {
+        throw std::runtime_error("");
+    }
+};
+
+void test_to_string_exception() {
+    bool catched = false;
+    try {
+        BadExternalClass bc{};
+        sc::to_string_any(bc);
+    } catch (const std::runtime_error&) {
+        catched = true;
+    }
+    slassert(catched);
+}
 
 int main() {
     try {
         test_to_string();
-//        test_to_string_exception();
+        test_to_string_exception();
     } catch (const std::exception& e) {
         std::cout << e.what() << std::endl;
         return 1;
