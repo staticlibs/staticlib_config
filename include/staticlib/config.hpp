@@ -27,6 +27,7 @@
 #include "staticlib/config/BaseException.hpp"
 #include "staticlib/config/current_function.hpp"
 #include "staticlib/config/defer.hpp"
+#include "staticlib/config/is_integer.hpp"
 #include "staticlib/config/noexcept.hpp"
 #include "staticlib/config/os.hpp"
 #include "staticlib/config/to_string.hpp"
