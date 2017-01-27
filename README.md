@@ -38,6 +38,10 @@ Implements `to_string` template that calls `std::to_string` on all supported pla
 where `std::to_string` is missed for some versions of NDK. `std::stringstream` implementation
 is used for Android.
 
+####defer template
+
+Implements a lambda function holder, that will execute specified lambda on destruction.
+
 ####BaseException
 
 Exception class that extends `std::exception` and implements constructor that takes `std::string`
@@ -68,6 +72,12 @@ This project is released under the [Apache License 2.0](http://www.apache.org/li
 
 Changelog
 ---------
+
+**2017-01-27**
+
+ * version 1.0.2
+ * `make_unique` removed
+ * `defer` added
 
 **2016-01-16**
 

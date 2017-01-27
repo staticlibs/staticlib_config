@@ -16,7 +16,7 @@ cmake_minimum_required ( VERSION 2.8.11 )
 
 # project
 project ( staticlib_config CXX )
-set ( ${PROJECT_NAME}_STATICLIB_VERSION 1.0.1 )
+set ( ${PROJECT_NAME}_STATICLIB_VERSION 1.0.2 )
 set ( ${PROJECT_NAME}_DESCRIPTION "Staticlibs Config library" )
 set ( ${PROJECT_NAME}_URL https://github.com/staticlibs/staticlib_config )
 
