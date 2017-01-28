@@ -33,6 +33,19 @@ namespace staticlib {
 namespace config {
 
 /**
+ * Generic `to_string` implementation
+ * 
+ * @param obj object to stringify
+ * @return string representation of specified value
+ */
+template<typename T>
+std::string to_string_any(const T& obj) {
+    std::stringstream ss{};
+    ss << obj;
+    return ss.str();
+}
+
+/**
  * Generic `to_string` implementation, already exists as `std::to_string`
  * in most C++11 compilers except GCC 4.8 on Android
  * 
@@ -46,19 +59,6 @@ std::string to_string(const T& obj) {
 #else     
     return to_string_any(obj);
 #endif // STATICLIB_ANDROID
-}
-
-/**
- * Generic `to_string` implementation
- * 
- * @param obj object to stringify
- * @return string representation of specified value
- */
-template<typename T>
-std::string to_string_any(const T& obj) {
-    std::stringstream ss{};
-    ss << obj;
-    return ss.str();
 }
 
 } // namespace

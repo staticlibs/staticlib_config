@@ -48,12 +48,12 @@ void test_is_uint32() {
     slassert(!sc::is_uint32(static_cast<uint64_t>(std::numeric_limits<uint32_t>::max()) + 1));
 }
 
-void test_is_positive_uint32() {
-    slassert(!sc::is_positive_uint32(0));
-    slassert(sc::is_positive_uint32(1));
-    slassert(sc::is_positive_uint32(static_cast<int64_t> (std::numeric_limits<uint32_t>::max())));
-    slassert(sc::is_positive_uint32(static_cast<uint64_t> (std::numeric_limits<uint32_t>::max())));
-    slassert(!sc::is_positive_uint32(static_cast<uint64_t> (std::numeric_limits<uint32_t>::max()) + 1));
+void test_is_uint32_positive() {
+    slassert(!sc::is_uint32_positive(0));
+    slassert(sc::is_uint32_positive(1));
+    slassert(sc::is_uint32_positive(static_cast<int64_t> (std::numeric_limits<uint32_t>::max())));
+    slassert(sc::is_uint32_positive(static_cast<uint64_t> (std::numeric_limits<uint32_t>::max())));
+    slassert(!sc::is_uint32_positive(static_cast<uint64_t> (std::numeric_limits<uint32_t>::max()) + 1));
 }
 
 void test_is_int16() {
@@ -74,22 +74,22 @@ void test_is_uint16() {
     slassert(!sc::is_uint16(static_cast<uint32_t> (std::numeric_limits<uint16_t>::max()) + 1));
 }
 
-void test_is_positive_uint16() {
-    slassert(!sc::is_positive_uint16(0));
-    slassert(sc::is_positive_uint16(1));
-    slassert(sc::is_positive_uint16(static_cast<int32_t> (std::numeric_limits<uint16_t>::max())));
-    slassert(sc::is_positive_uint16(static_cast<uint32_t> (std::numeric_limits<uint16_t>::max())));
-    slassert(!sc::is_positive_uint16(static_cast<uint32_t> (std::numeric_limits<uint16_t>::max()) + 1));
+void test_is_uint16_positive() {
+    slassert(!sc::is_uint16_positive(0));
+    slassert(sc::is_uint16_positive(1));
+    slassert(sc::is_uint16_positive(static_cast<int32_t> (std::numeric_limits<uint16_t>::max())));
+    slassert(sc::is_uint16_positive(static_cast<uint32_t> (std::numeric_limits<uint16_t>::max())));
+    slassert(!sc::is_uint16_positive(static_cast<uint32_t> (std::numeric_limits<uint16_t>::max()) + 1));
 }
 
 int main() {
     try {
         test_is_int32();
         test_is_uint32();
-        test_is_positive_uint32();
+        test_is_uint32_positive();
         test_is_int16();
         test_is_uint16();
-        test_is_positive_uint16();
+        test_is_uint16_positive();
     } catch (const std::exception& e) {
         std::cout << e.what() << std::endl;
         return 1;

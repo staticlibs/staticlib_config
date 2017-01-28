@@ -82,7 +82,7 @@ typename std::enable_if<!std::is_unsigned<T>::value, bool>::type is_uint32(T val
  * @return true if check successful, false otherwise
  */
 template <typename T>
-bool is_positive_uint32(T val) {
+bool is_uint32_positive(T val) {
     return 0 != val && is_uint32(val);
 }
 
@@ -137,7 +137,7 @@ typename std::enable_if<!std::is_unsigned<T>::value, bool>::type is_uint16(T val
  * @return true if check successful, false otherwise
  */
 template <typename T>
-bool is_positive_uint16(T val) {
+bool is_uint16_positive(T val) {
     return 0 != val && is_uint16(val);
 }
 
