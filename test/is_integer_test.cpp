@@ -82,6 +82,14 @@ void test_is_uint16_positive() {
     slassert(!sc::is_uint16_positive(static_cast<uint32_t> (std::numeric_limits<uint16_t>::max()) + 1));
 }
 
+void test_is_streamsize() {
+    slassert(sc::is_streamsize(-1));
+    slassert(sc::is_streamsize(0));
+    slassert(sc::is_streamsize(1));
+    slassert(!sc::is_streamsize(std::numeric_limits<size_t>::max()));
+    slassert(sc::is_streamsize(std::numeric_limits<std::streamsize>::min()));
+}
+
 int main() {
     try {
         test_is_int32();
@@ -90,6 +98,7 @@ int main() {
         test_is_int16();
         test_is_uint16();
         test_is_uint16_positive();
+        test_is_streamsize();
     } catch (const std::exception& e) {
         std::cout << e.what() << std::endl;
         return 1;

@@ -24,6 +24,7 @@
 #ifndef STATICLIB_CONFIG_IS_INTEGER_HPP
 #define	STATICLIB_CONFIG_IS_INTEGER_HPP
 
+#include <ios>
 #include <limits>
 #include <type_traits>
 #include <cstdint>
@@ -139,6 +140,28 @@ typename std::enable_if<!std::is_unsigned<T>::value, bool>::type is_uint16(T val
 template <typename T>
 bool is_uint16_positive(T val) {
     return 0 != val && is_uint16(val);
+}
+
+/**
+ * Checks that specified unsigned integer lies between `<streamsize>::min()` and `<streamsize>::max()`
+ * 
+ * @param val integer
+ * @return true if check successful, false otherwise
+ */
+template <typename T>
+typename std::enable_if<std::is_unsigned<T>::value, bool>::type is_streamsize(T val) {
+    return val <= static_cast<std::size_t> (std::numeric_limits<std::streamsize>::max());
+}
+
+/**
+ * Checks that specified signed integer lies between `<streamsize>::min()` and `<streamsize>::max()`
+ * 
+ * @param val integer
+ * @return true if check successful, false otherwise
+ */
+template <typename T>
+typename std::enable_if<!std::is_unsigned<T>::value, bool>::type is_streamsize(T val) {
+    return val >= std::numeric_limits<std::streamsize>::min() && val <= std::numeric_limits<std::streamsize>::max();
 }
 
 } // namespace
