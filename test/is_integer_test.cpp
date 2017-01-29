@@ -90,6 +90,22 @@ void test_is_streamsize() {
     slassert(sc::is_streamsize(std::numeric_limits<std::streamsize>::min()));
 }
 
+void test_is_sizet() {
+    slassert(sc::is_sizet(0));
+    slassert(sc::is_sizet(1));
+    slassert(!sc::is_sizet(-1));
+    slassert(sc::is_sizet(std::numeric_limits<size_t>::max()));
+    slassert(sc::is_sizet(std::numeric_limits<size_t>::min()));
+}
+
+void test_is_sizet_positive() {
+    slassert(!sc::is_sizet_positive(0));
+    slassert(sc::is_sizet_positive(1));
+    slassert(!sc::is_sizet_positive(-1));
+    slassert(sc::is_sizet_positive(std::numeric_limits<size_t>::max()));
+    slassert(!sc::is_sizet_positive(std::numeric_limits<size_t>::min()));
+}
+
 int main() {
     try {
         test_is_int32();
@@ -99,6 +115,8 @@ int main() {
         test_is_uint16();
         test_is_uint16_positive();
         test_is_streamsize();
+        test_is_sizet();
+        test_is_sizet_positive();
     } catch (const std::exception& e) {
         std::cout << e.what() << std::endl;
         return 1;

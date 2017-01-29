@@ -164,6 +164,42 @@ typename std::enable_if<!std::is_unsigned<T>::value, bool>::type is_streamsize(T
     return val >= std::numeric_limits<std::streamsize>::min() && val <= std::numeric_limits<std::streamsize>::max();
 }
 
+/**
+ * Checks that specified unsigned integer lies between `0` (inclusive) and `<size_t>::max()`
+ * 
+ * @param val integer
+ * @return true if check successful, false otherwise
+ */
+template <typename T>
+typename std::enable_if<std::is_unsigned<T>::value, bool>::type is_sizet(T val) {
+    return val <= std::numeric_limits<size_t>::max();
+}
+
+/**
+ * Checks that specified signed integer lies between `0` (inclusive) and `<size_t>::max()`
+ * 
+ * @param val integer
+ * @return true if check successful, false otherwise
+ */
+template <typename T>
+typename std::enable_if<!std::is_unsigned<T>::value, bool>::type is_sizet(T val) {
+    if (val < 0) {
+        return false;
+    }
+    return static_cast<uint64_t>(val) <= std::numeric_limits<size_t>::max();
+}
+
+/**
+ * Checks that specified integer lies between `0` (exclusive) and `<uint32_t>::max()`
+ * 
+ * @param val integer
+ * @return true if check successful, false otherwise
+ */
+template <typename T>
+bool is_sizet_positive(T val) {
+    return 0 != val && is_sizet(val);
+}
+
 } // namespace
 }
 
