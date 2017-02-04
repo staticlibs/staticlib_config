@@ -81,6 +81,11 @@ This project is released under the [Apache License 2.0](http://www.apache.org/li
 Changelog
 ---------
 
+**2017-02-04**
+
+ * version 1.0.2
+ * `optional` and `observer_ptr` added
+
 **2017-01-27**
 
  * version 1.0.2
