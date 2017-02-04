@@ -65,6 +65,10 @@ Multiple "traced" messages can be combined together to look similar to Java stac
 
     #include "staticlib/config/assert.hpp"
 
+####optional
+
+Basic implementation of `optional` template.
+
 License information
 -------------------
 

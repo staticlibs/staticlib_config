@@ -29,6 +29,7 @@
 #include "staticlib/config/defer.hpp"
 #include "staticlib/config/is_integer.hpp"
 #include "staticlib/config/noexcept.hpp"
+#include "staticlib/config/optional.hpp"
 #include "staticlib/config/os.hpp"
 #include "staticlib/config/to_string.hpp"
 #include "staticlib/config/tracemsg.hpp"
