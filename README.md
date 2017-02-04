@@ -69,6 +69,10 @@ Multiple "traced" messages can be combined together to look similar to Java stac
 
 Basic implementation of `optional` template.
 
+####observer_ptr
+
+Basic implementation of non-owning pointer template.
+
 License information
 -------------------
 
