@@ -36,15 +36,24 @@ void test_to_string() {
 }
 
 class BadExternalClass {
-    friend std::ostream &operator<<(std::ostream&, const BadExternalClass&) {
-        throw std::runtime_error("");
+    bool will_throw = false;
+
+public:
+    BadExternalClass(bool will_throw) :
+    will_throw(will_throw) { }
+
+    friend std::ostream &operator<<(std::ostream& st, const BadExternalClass& cl) {
+        if (cl.will_throw) {
+            throw std::runtime_error("");
+        }
+        return st;
     }
 };
 
 void test_to_string_exception() {
     bool catched = false;
     try {
-        BadExternalClass bc{};
+        BadExternalClass bc(true);
         sc::to_string_any(bc);
     } catch (const std::runtime_error&) {
         catched = true;
