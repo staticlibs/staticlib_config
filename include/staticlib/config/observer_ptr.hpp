@@ -42,13 +42,28 @@ public:
     BaseException("Invalid attempt to access empty observed pointer") { }
 };
 
+
+/**
+ * Non-owning pointer
+ */
 template<typename T>
 class observer_ptr {
+    /**
+     * Target pointer
+     */
     T* target = nullptr;
     
-public:    
+public:
+    /**
+     * Constructs empty instance
+     */
     observer_ptr() { }
     
+    /**
+     * Constructor
+     * 
+     * @param target pointer to store in this instance
+     */
     observer_ptr(T* target) :
     target(target) { }
 
@@ -89,6 +104,12 @@ public:
         return nullptr != target;
     }
 
+    /**
+     * Returns reference to stored object
+     * 
+     * @return reference to stored object
+     * @throws BadObservedPointerAccessException if this instance is empty
+     */
     T& operator*() const {
         if (has_value()) {
             return *target;
@@ -97,6 +118,12 @@ public:
         }
     }
 
+    /**
+     * Returns stored pointer
+     * 
+     * @return stored pointer
+     * @throws BadObservedPointerAccessException if this instance is empty
+     */
     T* operator->() const {
         if (has_value()) {
             return target;
@@ -105,6 +132,12 @@ public:
         }
     }
 
+    /**
+     * Returns stored pointer
+     * 
+     * @return stored pointer
+     * @throws BadObservedPointerAccessException if this instance is empty
+     */
     T* get() const {
         if (has_value()) {
             return target;
@@ -113,11 +146,21 @@ public:
         }
     }
 
+    /**
+     * Make this instance empty
+     */
     void reset() {
         target = nullptr;
     }
 };
 
+
+/**
+ * Helper function, constructs new observer instance
+ * 
+ * @param target target pointer
+ * @return observer instance
+ */
 template<typename T>
 observer_ptr<T> make_observer_ptr(T* target) {
     return observer_ptr<T>(target);
