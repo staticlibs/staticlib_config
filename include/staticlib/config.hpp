@@ -32,6 +32,7 @@
 #include "staticlib/config/observer_ptr.hpp"
 #include "staticlib/config/optional.hpp"
 #include "staticlib/config/os.hpp"
+#include "staticlib/config/span.hpp"
 #include "staticlib/config/to_string.hpp"
 #include "staticlib/config/tracemsg.hpp"
 

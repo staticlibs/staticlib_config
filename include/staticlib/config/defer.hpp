@@ -24,9 +24,9 @@
 #ifndef STATICLIB_CONFIG_DEFER_HPP
 #define	STATICLIB_CONFIG_DEFER_HPP
 
-#include "staticlib/config/noexcept.hpp"
-
 #include <utility>
+
+#include "staticlib/config/noexcept.hpp"
 
 namespace staticlib {
 namespace config {
@@ -76,7 +76,7 @@ public:
 #ifdef STATICLIB_NOEXCEPT_SUPPORTED
         static_assert(noexcept(func()),
                 "Please check that the defer block cannot throw, "
-                "and mark the lambda as noexcept.");
+                "and mark the lambda as 'noexcept'.");
 #endif
         func();
     }
@@ -87,6 +87,7 @@ public:
 /**
  * Creates a "guard object", that will execute
  * specified lambda function on destruction.
+ * Similar in nature with GSL's `finally`.
  * 
  * @param func lambda function to execute on destruction,
  *        must be "noexcept"

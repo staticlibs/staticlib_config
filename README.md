@@ -67,11 +67,15 @@ Multiple "traced" messages can be combined together to look similar to Java stac
 
 ####optional
 
-Basic implementation of `optional` template.
+Basic implementation of `optional` template [from C++17](http://en.cppreference.com/w/cpp/utility/optional).
 
 ####observer_ptr
 
 Basic implementation of non-owning pointer template.
+
+####span
+
+Basic implementation of `span` template [from GSL](https://github.com/Microsoft/GSL/blob/96eaf274f8c57829080100f7cd1d2e7744bae1ae/gsl/span).
 
 License information
 -------------------
@@ -83,8 +87,8 @@ Changelog
 
 **2017-02-04**
 
- * version 1.0.2
- * `optional` and `observer_ptr` added
+ * version 1.0.3
+ * `optional`, `observer_ptr` and `span` added
 
 **2017-01-27**
 
