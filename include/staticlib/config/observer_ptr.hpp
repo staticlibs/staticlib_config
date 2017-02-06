@@ -64,7 +64,7 @@ public:
      * 
      * @param target pointer to store in this instance
      */
-    observer_ptr(T* target) :
+    explicit observer_ptr(T* target) :
     target(target) { }
 
     /**

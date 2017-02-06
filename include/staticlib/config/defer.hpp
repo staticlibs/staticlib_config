@@ -48,7 +48,7 @@ public:
      * 
      * @param func lambda function to execute on destruction
      */
-    defer_guard(T func) :
+    explicit defer_guard(T func) :
     func(std::move(func)) { }
 
     /**

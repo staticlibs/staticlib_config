@@ -72,7 +72,7 @@ public:
      * 
      * @param value to store in this instance
      */
-    optional(T&& value) :
+    explicit optional(T&& value) :
     value_ptr(new (std::addressof(value_space)) T(std::move(value))) { }
     
     /**
