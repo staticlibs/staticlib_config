@@ -41,6 +41,7 @@ namespace detail {
 template<typename T>
 class defer_guard {
     T func;
+    bool moved_out = false;
     
 public:
     /**
@@ -67,7 +68,9 @@ public:
      * @param other other instance
      */
     defer_guard(defer_guard&& other) :
-    func(std::move(other.func)) { }
+    func(std::move(other.func)) {
+        other.moved_out = true;
+    }
 
     /**
      * Destructor, will execute lambda function
@@ -78,7 +81,9 @@ public:
                 "Please check that the defer block cannot throw, "
                 "and mark the lambda as 'noexcept'.");
 #endif
-        func();
+        if (!moved_out) {
+            func();
+        }
     }
 };
 
