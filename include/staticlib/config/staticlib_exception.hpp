@@ -15,14 +15,14 @@
  */
 
 /* 
- * File:   BaseException.hpp
+ * File:   staticlib_exception.hpp
  * Author: alex
  *
  * Created on January 2, 2015, 11:49 AM
  */
 
-#ifndef STATICLIB_CONFIG_BASEEXCEPTION_HPP
-#define	STATICLIB_CONFIG_BASEEXCEPTION_HPP
+#ifndef STATICLIB_CONFIG_STATICLIB_EXCEPTION_HPP
+#define	STATICLIB_CONFIG_STATICLIB_EXCEPTION_HPP
 
 #include <exception>
 #include <string>
@@ -33,9 +33,9 @@ namespace staticlib {
 namespace config {
 
 /**
- * Base exception class for business exceptions in staticlib modules
+ * Base exception class for various exceptions in staticlib modules
  */
-class BaseException : public std::exception {
+class staticlib_exception : public std::exception {
 protected:
     /**
      * Error message
@@ -46,14 +46,14 @@ public:
     /**
      * Default constructor
      */
-    BaseException() = default;
+    staticlib_exception() = default;
     
     /**
      * Constructor with message
      * 
      * @param msg error message
      */
-    BaseException(std::string message) : 
+    staticlib_exception(std::string message) : 
     message(std::move(message)) { }
     
     /**
@@ -69,5 +69,5 @@ public:
 } //namespace
 }
 
-#endif	/* STATICLIB_CONFIG_BASEEXCEPTION_HPP */
+#endif	/* STATICLIB_CONFIG_STATICLIB_EXCEPTION_HPP */
 

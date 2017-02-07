@@ -30,7 +30,7 @@
 #include <string>
 #include <vector>
 
-#include "staticlib/config/BaseException.hpp"
+#include "staticlib/config/staticlib_exception.hpp"
 #include "staticlib/config/is_integer.hpp"
 #include "staticlib/config/noexcept.hpp"
 #include "staticlib/config/to_string.hpp"
@@ -41,21 +41,21 @@ namespace config {
 /**
  * Span-specific exception
  */
-class BadSpanAccessException : public BaseException {
+class bad_span_access_exception : public staticlib_exception {
 public:
 
     /**
      * Default constructor
      */
-    BadSpanAccessException() = default;
+    bad_span_access_exception() = default;
     
     /**
      * Constructor with message
      * 
      * @param msg error message
      */
-    BadSpanAccessException(const std::string& msg) :
-    BaseException(msg) { }
+    bad_span_access_exception(const std::string& msg) :
+    staticlib_exception(msg) { }
 
 };
 
@@ -81,7 +81,7 @@ public:
      * 
      * @param buffer span start pointer
      * @param length number of elements
-     * @throws BadSpanAccessException on null pointer or on invalid index
+     * @throws bad_span_access_exception on null pointer or on invalid index
      */
     template<typename IntType>
     span(T* buffer, IntType length) :
@@ -91,11 +91,11 @@ public:
             if (is_sizet(length) && is_streamsize(length)) {
                 last_ptr += static_cast<size_t> (length);
             } else {
-                throw BadSpanAccessException(std::string() + "Invalid 'length' span parameter specified," +
+                throw bad_span_access_exception(std::string() + "Invalid 'length' span parameter specified," +
                         " length: [" + to_string(length) + "]");
             }
         } else {
-            throw BadSpanAccessException(std::string() + "Invalid 'null' data pointer specified to span," +
+            throw bad_span_access_exception(std::string() + "Invalid 'null' data pointer specified to span," +
                     " length: [" + to_string(length) + "]");
         }
     }
@@ -166,13 +166,13 @@ public:
      * 
      * @param index index to access element at
      * @return reference to element
-     * @throws BadSpanAccessException on invalid index
+     * @throws bad_span_access_exception on invalid index
      */
     T& operator[](size_t index) const {
         if (index < size()) {
             return *(first_ptr + index);
         } else {
-            throw BadSpanAccessException(std::string() + "Invalid index access attempt," +
+            throw bad_span_access_exception(std::string() + "Invalid index access attempt," +
                     " span size: [" + to_string(size()) + "],"
                     " index: [" + to_string(index) + "]");
         }

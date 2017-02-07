@@ -26,7 +26,7 @@
 
 #include <type_traits>
 
-#include "staticlib/config/BaseException.hpp"
+#include "staticlib/config/staticlib_exception.hpp"
 #include "staticlib/config/noexcept.hpp"
 
 namespace staticlib {
@@ -35,13 +35,13 @@ namespace config {
 /**
  * Optional-specific exception
  */
-class BadOptionalAccessException : public BaseException {
+class bad_optional_access_exception : public staticlib_exception {
 public:
     /**
      * Default constructor
      */
-    BadOptionalAccessException() :
-    BaseException("Invalid attempt to access non-initialized value of 'optional' object") { }
+    bad_optional_access_exception() :
+    staticlib_exception("Invalid attempt to access non-initialized value of 'optional' object") { }
 };
 
 /**
@@ -143,13 +143,13 @@ public:
      * Access stored value
      * 
      * @return value reference
-     * @throws BadOptionalAccessException of this instance is empty
+     * @throws bad_optional_access_exception of this instance is empty
      */
     T& value() {
         if(has_value()) {
             return *value_ptr;
         } else {
-            throw BadOptionalAccessException();
+            throw bad_optional_access_exception();
         }
     }
 
@@ -157,13 +157,13 @@ public:
      * Access stored value
      * 
      * @return value const reference
-     * @throws BadOptionalAccessException of this instance is empty
+     * @throws bad_optional_access_exception of this instance is empty
      */
     const T& value() const {
         if (has_value()) {
             return *value_ptr;
         } else {
-            throw BadOptionalAccessException();
+            throw bad_optional_access_exception();
         }
     }
 

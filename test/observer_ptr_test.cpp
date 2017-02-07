@@ -35,7 +35,7 @@ namespace sc = staticlib::config;
 bool throws_exc(std::function<void() > fun) {
     try {
         fun();
-    } catch (const sc::BadObservedPointerAccessException& e) {
+    } catch (const sc::bad_observed_pointer_access_exception& e) {
         (void) e;
         return true;
     }

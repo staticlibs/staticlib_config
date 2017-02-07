@@ -15,13 +15,13 @@
  */
 
 /* 
- * File:   BaseException_test.cpp
+ * File:   staticlib_exception_test.cpp
  * Author: alex
  * 
  * Created on January 2, 2015, 12:04 PM
  */
 
-#include "staticlib/config/BaseException.hpp"
+#include "staticlib/config/staticlib_exception.hpp"
 
 #include <string>
 #include <iostream>
@@ -31,12 +31,12 @@
 
 namespace ss = staticlib::config;
 
-class TestExc : public ss::BaseException {
+class TestExc : public ss::staticlib_exception {
 public:
     TestExc() = default;
     
     TestExc(const std::string& msg) : 
-    ss::BaseException(msg) { }
+    ss::staticlib_exception(msg) { }
 };
 
 void test_throw() {
@@ -56,14 +56,14 @@ namespace some_fancy {
 namespace some_fancy2 {
 
 void fun_throw() {
-    throw ss::BaseException(TRACEMSG("Error happened here!"));
+    throw ss::staticlib_exception(TRACEMSG("Error happened here!"));
 }
 
 void fun1() {
     try {
         fun_throw();
     } catch(const std::exception& e) {
-        throw ss::BaseException(TRACEMSG(e.what()));
+        throw ss::staticlib_exception(TRACEMSG(e.what()));
     }
 }
 
@@ -76,7 +76,7 @@ public:
         try {
             fun1();
         } catch (const std::exception& e) {
-            throw ss::BaseException(TRACEMSG(e.what()));
+            throw ss::staticlib_exception(TRACEMSG(e.what()));
         }
     }
 };
@@ -86,7 +86,7 @@ void fun2() {
     try {
         Thrower().rethrow_some_exception(42, "");
     } catch (const std::exception& e) {
-        throw ss::BaseException(TRACEMSG(std::string(e.what())
+        throw ss::staticlib_exception(TRACEMSG(std::string(e.what())
                 .append("\nI've caught and rethrow it!")));
     }
 }
@@ -95,19 +95,19 @@ void fun3() {
     try {
         fun2();
     } catch (const std::exception& e) {
-        throw ss::BaseException(TRACEMSG(e.what()));
+        throw ss::staticlib_exception(TRACEMSG(e.what()));
     }
 }
 // note: assert here is sensible to line numbers
 void test_stacktrace() {
     std::string expected{
 R"(Error happened here!
-    at some_fancy::some_fancy2::fun_throw(BaseException_test.cpp:46)
-    at some_fancy::some_fancy2::fun1(BaseException_test.cpp:53)
-    at some_fancy::some_fancy2::Thrower::rethrow_some_exception(BaseException_test.cpp:66)
+    at some_fancy::some_fancy2::fun_throw(staticlib_exception_test.cpp:46)
+    at some_fancy::some_fancy2::fun1(staticlib_exception_test.cpp:53)
+    at some_fancy::some_fancy2::Thrower::rethrow_some_exception(staticlib_exception_test.cpp:66)
 I've caught and rethrow it!
-    at some_fancy::some_fancy2::fun2(BaseException_test.cpp:77)
-    at some_fancy::some_fancy2::fun3(BaseException_test.cpp:85))"};
+    at some_fancy::some_fancy2::fun2(staticlib_exception_test.cpp:77)
+    at some_fancy::some_fancy2::fun3(staticlib_exception_test.cpp:85))"};
     bool catched = false;
     try {
         fun3();

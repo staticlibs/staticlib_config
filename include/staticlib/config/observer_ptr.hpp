@@ -24,7 +24,7 @@
 #ifndef STATICLIB_CONFIG_OBSERVER_PTR_HPP
 #define	STATICLIB_CONFIG_OBSERVER_PTR_HPP
 
-#include "staticlib/config/BaseException.hpp"
+#include "staticlib/config/staticlib_exception.hpp"
 
 namespace staticlib {
 namespace config {
@@ -32,14 +32,14 @@ namespace config {
 /**
  * Observer-specific exception
  */
-class BadObservedPointerAccessException : public BaseException {
+class bad_observed_pointer_access_exception : public staticlib_exception {
 public:
 
     /**
      * Default constructor
      */
-    BadObservedPointerAccessException() :
-    BaseException("Invalid attempt to access empty observed pointer") { }
+    bad_observed_pointer_access_exception() :
+    staticlib_exception("Invalid attempt to access empty observed pointer") { }
 };
 
 
@@ -108,13 +108,13 @@ public:
      * Returns reference to stored object
      * 
      * @return reference to stored object
-     * @throws BadObservedPointerAccessException if this instance is empty
+     * @throws bad_observed_pointer_access_exception if this instance is empty
      */
     T& operator*() const {
         if (has_value()) {
             return *target;
         } else {
-            throw BadObservedPointerAccessException();
+            throw bad_observed_pointer_access_exception();
         }
     }
 
@@ -122,13 +122,13 @@ public:
      * Returns stored pointer
      * 
      * @return stored pointer
-     * @throws BadObservedPointerAccessException if this instance is empty
+     * @throws bad_observed_pointer_access_exception if this instance is empty
      */
     T* operator->() const {
         if (has_value()) {
             return target;
         } else {
-            throw BadObservedPointerAccessException();
+            throw bad_observed_pointer_access_exception();
         }
     }
 
@@ -136,13 +136,13 @@ public:
      * Returns stored pointer
      * 
      * @return stored pointer
-     * @throws BadObservedPointerAccessException if this instance is empty
+     * @throws bad_observed_pointer_access_exception if this instance is empty
      */
     T* get() const {
         if (has_value()) {
             return target;
         } else {
-            throw BadObservedPointerAccessException();
+            throw bad_observed_pointer_access_exception();
         }
     }
 

@@ -27,7 +27,7 @@
 #include <stdexcept>
 #include <string>
 
-#include "staticlib/config/BaseException.hpp"
+#include "staticlib/config/staticlib_exception.hpp"
 
 namespace sc = staticlib::config;
 
@@ -37,7 +37,7 @@ void test_assert() {
         int a = 0;
         int b = 1;
         slassert(a > b);
-    } catch (const sc::AssertException&) {
+    } catch (const sc::assert_exception&) {
         catched = true;
     }
     if (!catched) throw std::runtime_error("Assert not thrown");

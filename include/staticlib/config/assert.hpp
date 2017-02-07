@@ -26,13 +26,13 @@
 
 #include <string>
 
-#include "staticlib/config/BaseException.hpp"
+#include "staticlib/config/staticlib_exception.hpp"
 #include "staticlib/config/tracemsg.hpp"
 
 /**
- * Assert macro, will throw `AssertException` on expression fail
+ * Assert macro, will throw `assert_exception` on expression fail
  */
-#define slassert(_expr) if (!(_expr)) throw staticlib::config::AssertException(TRACEMSG("ASSERTION ERROR:"));
+#define slassert(_expr) if (!(_expr)) throw staticlib::config::assert_exception(TRACEMSG("ASSERTION ERROR:"));
 
 namespace staticlib {
 namespace config {
@@ -40,20 +40,20 @@ namespace config {
 /**
  * Assert-specific exception
  */
-class AssertException : public BaseException {
+class assert_exception : public staticlib_exception {
 public:
     /**
      * Default constructor
      */
-    AssertException() = default;
+    assert_exception() = default;
 
     /**
      * Constructor with message
      * 
      * @param msg error message
      */
-    AssertException(const std::string& msg) :
-    BaseException(msg) { }
+    assert_exception(const std::string& msg) :
+    staticlib_exception(msg) { }
 
 };
 

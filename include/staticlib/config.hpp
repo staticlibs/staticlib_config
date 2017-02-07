@@ -24,7 +24,6 @@
 #ifndef STATICLIB_CONFIG_HPP
 #define	STATICLIB_CONFIG_HPP
 
-#include "staticlib/config/BaseException.hpp"
 #include "staticlib/config/current_function.hpp"
 #include "staticlib/config/defer.hpp"
 #include "staticlib/config/is_integer.hpp"
@@ -33,6 +32,7 @@
 #include "staticlib/config/optional.hpp"
 #include "staticlib/config/os.hpp"
 #include "staticlib/config/span.hpp"
+#include "staticlib/config/staticlib_exception.hpp"
 #include "staticlib/config/to_string.hpp"
 #include "staticlib/config/tracemsg.hpp"
 
