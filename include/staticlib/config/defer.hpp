@@ -67,10 +67,15 @@ public:
      * 
      * @param other other instance
      */
-    defer_guard(defer_guard&& other) :
+    defer_guard(defer_guard&& other) STATICLIB_NOEXCEPT :
     func(std::move(other.func)) {
         other.moved_out = true;
     }
+
+    /**
+     * Deleted move-assignment operator
+     */
+    defer_guard& operator=(defer_guard&&) = delete;
 
     /**
      * Destructor, will execute lambda function

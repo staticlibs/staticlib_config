@@ -90,7 +90,7 @@ public:
      * 
      * @param other other instance
      */
-    optional(optional&& other) {
+    optional(optional&& other) STATICLIB_NOEXCEPT {
         if(other.has_value())  {
             value_ptr = new (std::addressof(value_space)) T(std::move(other.value()));
             other.reset();
@@ -103,7 +103,7 @@ public:
      * @param other other instance
      * @return  this instance
      */
-    optional& operator=(optional&& other) {
+    optional& operator=(optional&& other) STATICLIB_NOEXCEPT {
         reset();
         if (other.has_value()) {
             value_ptr = new (std::addressof(value_space)) T(std::move(other.value()));
