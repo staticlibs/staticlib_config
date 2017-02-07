@@ -53,8 +53,8 @@ public:
      * 
      * @param msg error message
      */
-    staticlib_exception(std::string message) : 
-    message(std::move(message)) { }
+    staticlib_exception(const std::string& message) : 
+    message(message.data(), message.length()) { }
     
     /**
      * Returns error message
