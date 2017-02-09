@@ -68,6 +68,14 @@ public:
     target(target) { }
 
     /**
+     * Constructor
+     * 
+     * @param target reference to store in this instance
+     */
+    explicit observer_ptr(T& target) :
+    target(std::addressof(target)) { }
+
+    /**
      * Copy constructor
      * 
      * @param other other instance
@@ -163,6 +171,17 @@ public:
  */
 template<typename T>
 observer_ptr<T> make_observer_ptr(T* target) {
+    return observer_ptr<T>(target);
+}
+
+/**
+ * Helper function, constructs new observer instance
+ * 
+ * @param target target reference
+ * @return observer instance
+ */
+template<typename T>
+observer_ptr<T> make_observer_ptr(T& target) {
     return observer_ptr<T>(target);
 }
 
