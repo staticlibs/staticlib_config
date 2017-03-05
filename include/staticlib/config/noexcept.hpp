@@ -26,12 +26,17 @@
 
 // http://stackoverflow.com/a/18387764/314015
 // Compliant C++11 compilers put noexcept specifiers on error_category
+// VS2013 is _MSC_VER 1800, VS2015 is _MSC_VER 1900
 #ifndef _MSC_VER
-#define STATICLIB_NOEXCEPT noexcept
+#  define STATICLIB_NOEXCEPT noexcept
+#  define STATICLIB_NOEXCEPT_FALSE noexcept(false)
+#  define STATICLIB_NOEXCEPT_SUPPORTED
 #else
-# if (_MSC_VER >= 1900)
-#  define STATICLIB_NOEXCEPT noexcept(true)
-# endif //(_MSC_VER >= 1900)
+#  if (_MSC_VER >= 1900)
+#    define STATICLIB_NOEXCEPT noexcept(true)
+#    define STATICLIB_NOEXCEPT_FALSE noexcept(false)
+#    define STATICLIB_NOEXCEPT_SUPPORTED
+#  endif //(_MSC_VER >= 1900)
 #endif // _MSC_VER
 # if !defined(STATICLIB_NOEXCEPT)
 #  define STATICLIB_NOEXCEPT
