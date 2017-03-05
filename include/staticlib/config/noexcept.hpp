@@ -25,14 +25,23 @@
 #define	STATICLIB_CONFIG_NOEXCEPT_HPP
 
 // http://stackoverflow.com/a/18387764/314015
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-#define STATICLIB_NOEXCEPT noexcept
-#define STATICLIB_NOEXCEPT_FALSE noexcept(false)
-#define STATICLIB_NOEXCEPT_SUPPORTED
+// Compliant C++11 compilers put noexcept specifiers on error_category
+// VS2013 is _MSC_VER 1800, VS2015 is _MSC_VER 1900
+#ifndef _MSC_VER
+#  define STATICLIB_NOEXCEPT noexcept
+#  define STATICLIB_NOEXCEPT_FALSE noexcept(false)
+#  define STATICLIB_NOEXCEPT_SUPPORTED
 #else
-#define STATICLIB_NOEXCEPT
-#define STATICLIB_NOEXCEPT_FALSE
+#  if (_MSC_VER >= 1900)
+#    define STATICLIB_NOEXCEPT noexcept(true)
+#    define STATICLIB_NOEXCEPT_FALSE noexcept(false)
+#    define STATICLIB_NOEXCEPT_SUPPORTED
+#  endif //(_MSC_VER >= 1900)
 #endif // _MSC_VER
+# if !defined(STATICLIB_NOEXCEPT)
+#  define STATICLIB_NOEXCEPT
+#endif //!defined(STATICLIB_NOEXCEPT)
+
 
 #endif	/* STATICLIB_CONFIG_NOEXCEPT_HPP */
 
