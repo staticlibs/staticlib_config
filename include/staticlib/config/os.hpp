@@ -43,4 +43,3 @@
 #endif
 
 #endif	/* STATICLIB_CONFIG_OS_HPP */
-

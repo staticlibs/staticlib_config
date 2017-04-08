@@ -44,4 +44,3 @@
 
 
 #endif	/* STATICLIB_CONFIG_NOEXCEPT_HPP */
-

@@ -24,10 +24,12 @@
 #ifndef STATICLIB_CONFIG_TRACEMSG_HPP
 #define	STATICLIB_CONFIG_TRACEMSG_HPP
 
+#include <cstdio>
+#include <limits>
 #include <string>
 
 #include "staticlib/config/current_function.hpp"
-#include "staticlib/config/to_string.hpp"
+#include "staticlib/config/os.hpp"
 
 #define TRACEMSG(message) staticlib::config::tracemsg(std::string() + message, __FILE__, STATICLIB_CURRENT_FUNCTION, __LINE__)
 
@@ -61,6 +63,10 @@ inline std::string tracemsg(const std::string& message, const std::string& file,
             filename_start_pos = backslash_ind + 1;
         }
     }
+    // to_string moved to sl::support
+    std::string linestr;
+    linestr.resize(std::numeric_limits<int>::digits10);
+    std::snprintf(std::addressof(linestr.front()), linestr.length(), "%d", line);
     // format message
     return std::string()
             .append(message)
@@ -69,7 +75,7 @@ inline std::string tracemsg(const std::string& message, const std::string& file,
             .append("(")
             .append(file, filename_start_pos, file.length() - filename_start_pos)
             .append(":")
-            .append(to_string(line))
+            .append(linestr)
             .append(")");
 }
 
@@ -77,4 +83,3 @@ inline std::string tracemsg(const std::string& message, const std::string& file,
 }
 
 #endif	/* STATICLIB_CONFIG_TRACEMSG_HPP */
-

@@ -27,20 +27,20 @@
 #include <stdexcept>
 #include <string>
 
-#include "staticlib/config/staticlib_exception.hpp"
-
-namespace sc = staticlib::config;
+namespace sl = staticlib;
 
 void test_assert() {
-    bool catched = false;
+    bool caught = false;
     try {
         int a = 0;
         int b = 1;
         slassert(a > b);
-    } catch (const sc::assert_exception&) {
-        catched = true;
+    } catch (const sl::config::assert_exception&) {
+        caught = true;
     }
-    if (!catched) throw std::runtime_error("Assert not thrown");
+    if (!caught) {
+        throw std::runtime_error("Assert not thrown");        
+    }
 }
 
 int main() {

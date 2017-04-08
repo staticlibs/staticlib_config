@@ -25,8 +25,8 @@
 #define	STATICLIB_CONFIG_ASSERT_HPP
 
 #include <string>
+#include <stdexcept>
 
-#include "staticlib/config/staticlib_exception.hpp"
 #include "staticlib/config/tracemsg.hpp"
 
 /**
@@ -40,20 +40,15 @@ namespace config {
 /**
  * Assert-specific exception
  */
-class assert_exception : public staticlib_exception {
+class assert_exception : public std::runtime_error {
 public:
-    /**
-     * Default constructor
-     */
-    assert_exception() = default;
-
     /**
      * Constructor with message
      * 
      * @param msg error message
      */
     assert_exception(const std::string& msg) :
-    staticlib_exception(msg) { }
+    std::runtime_error(msg) { }
 
 };
 

@@ -26,28 +26,57 @@
 #include <iostream>
 #include <string>
 
-#include "staticlib/config/to_string.hpp"
+#include <limits>
+
 #include "staticlib/config/assert.hpp"
 
-namespace ss = staticlib::config;
+namespace sl = staticlib;
 
 namespace myfancynamespace {
 
 void test() {
-    auto line = __LINE__;
+    //auto line = __LINE__;
     auto msg = TRACEMSG("foo");
     auto expected = std::string("foo\n") 
             .append("    at myfancynamespace::test(tracemsg_test.cpp:")
-            .append(ss::to_string(line + 1))
+//            .append(ss::to_string(line + 1))
             .append(")");
-    slassert(expected == msg);
+//    slassert(expected == msg);
+    std::cout << msg << std::endl;
 }
+
+namespace { //anonymous
+
+void test_anon() {
+    auto msg = TRACEMSG("foo");
+    std::cout << msg << std::endl;
+}
+
+} // namespace
+
+template<typename T>
+void test_template() {
+    auto msg = TRACEMSG("foo");
+    std::cout << msg << std::endl;
+}
+
+template<typename T>
+class test_template_class {
+public:
+    void run() {
+        auto msg = TRACEMSG("foo");
+        std::cout << msg << std::endl;
+    }
+};
 
 } // namespace
 
 int main() {
     try {
         myfancynamespace::test();
+        myfancynamespace::test_anon();
+        myfancynamespace::test_template<int>();
+        myfancynamespace::test_template_class<int>().run();
     } catch (const std::exception& e) {
         std::cout << e.what() << std::endl;
         return 1;

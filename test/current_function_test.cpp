@@ -28,17 +28,17 @@
 
 #include "staticlib/config/assert.hpp"
 
-namespace sc = staticlib::config;
+namespace sl = staticlib;
 
 void test_toplevel() {
-    slassert(std::string::npos != std::string{STATICLIB_CURRENT_FUNCTION}.find("test_toplevel"));
+    slassert(std::string::npos != std::string(STATICLIB_CURRENT_FUNCTION).find("test_toplevel"));
 }
 
 namespace test1 {
 namespace test2 {
 
 void test_namespace() {
-    slassert(std::string::npos != std::string{STATICLIB_CURRENT_FUNCTION}.find("test1::test2::test_namespace"));
+    slassert(std::string::npos != std::string(STATICLIB_CURRENT_FUNCTION).find("test1::test2::test_namespace"));
 }
 
 } // namespace
