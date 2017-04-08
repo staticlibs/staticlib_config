@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">staticlib_config
-   &#160;<span id="projectnumber">1.0.0</span>
+   &#160;<span id="projectnumber">1.1.0</span>
    </div>
   </td>
  </tr>
@@ -70,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Macros</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -93,9 +93,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">tracemsg.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;string&gt;</code><br/>
+<div class="textblock"><code>#include &lt;limits&gt;</code><br/>
+<code>#include &lt;sstream&gt;</code><br/>
+<code>#include &lt;string&gt;</code><br/>
 <code>#include &quot;<a class="el" href="current__function_8hpp_source.html">staticlib/config/current_function.hpp</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="to__string_8hpp_source.html">staticlib/config/to_string.hpp</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="os_8hpp_source.html">staticlib/config/os.hpp</a>&quot;</code><br/>
 </div>
 <p><a href="tracemsg_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -106,7 +108,7 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a83ba3e4540a794de6a662bb045103c74"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tracemsg_8hpp.html#a83ba3e4540a794de6a662bb045103c74">TRACEMSG</a>(message)&#160;&#160;&#160;<a class="el" href="namespacestaticlib_1_1config.html#a3fb6c178d85f125480dd86336b64fe56">staticlib::config::tracemsg</a>(message, __FILE__, <a class="el" href="current__function_8hpp.html#a41babd4bdd53aa76395190611ad30277">STATICLIB_CURRENT_FUNCTION</a>, __LINE__)</td></tr>
+<tr class="memitem:a83ba3e4540a794de6a662bb045103c74"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tracemsg_8hpp.html#a83ba3e4540a794de6a662bb045103c74">TRACEMSG</a>(message)&#160;&#160;&#160;<a class="el" href="namespacestaticlib_1_1config.html#a3fb6c178d85f125480dd86336b64fe56">staticlib::config::tracemsg</a>(std::string() + message, __FILE__, <a class="el" href="current__function_8hpp.html#a41babd4bdd53aa76395190611ad30277">STATICLIB_CURRENT_FUNCTION</a>, __LINE__)</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -123,7 +125,7 @@ Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">message</td><td>)</td>
-          <td>&#160;&#160;&#160;<a class="el" href="namespacestaticlib_1_1config.html#a3fb6c178d85f125480dd86336b64fe56">staticlib::config::tracemsg</a>(message, __FILE__, <a class="el" href="current__function_8hpp.html#a41babd4bdd53aa76395190611ad30277">STATICLIB_CURRENT_FUNCTION</a>, __LINE__)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="namespacestaticlib_1_1config.html#a3fb6c178d85f125480dd86336b64fe56">staticlib::config::tracemsg</a>(std::string() + message, __FILE__, <a class="el" href="current__function_8hpp.html#a41babd4bdd53aa76395190611ad30277">STATICLIB_CURRENT_FUNCTION</a>, __LINE__)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -133,7 +135,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Nov 23 2015 15:43:33 for staticlib_config by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Apr 8 2017 12:22:51 for staticlib_config by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

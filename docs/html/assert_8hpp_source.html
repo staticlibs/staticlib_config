@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">staticlib_config
-   &#160;<span id="projectnumber">1.0.0</span>
+   &#160;<span id="projectnumber">1.1.0</span>
    </div>
   </td>
  </tr>
@@ -70,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Macros</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -116,33 +116,34 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define STATICLIB_CONFIG_ASSERT_HPP</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="BaseException_8hpp.html">staticlib/config/BaseException.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;stdexcept&gt;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="tracemsg_8hpp.html">staticlib/config/tracemsg.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="code" href="assert_8hpp.html#ac81968a8436144a0c88a471ab6021e97">   35</a></span>&#160;<span class="preprocessor">#define slassert(_expr) if (!(_expr)) throw staticlib::config::AssertException(TRACEMSG(&quot;ASSERTION ERROR:&quot;));</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="code" href="assert_8hpp.html#ac81968a8436144a0c88a471ab6021e97">   35</a></span>&#160;<span class="preprocessor">#define slassert(_expr) if (!(_expr)) throw staticlib::config::assert_exception(TRACEMSG(&quot;ASSERTION ERROR:&quot;));</span></div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00037"></a><span class="lineno"><a class="code" href="namespacestaticlib.html">   37</a></span>&#160;<span class="keyword">namespace </span>staticlib {</div>
 <div class="line"><a name="l00038"></a><span class="lineno"><a class="code" href="namespacestaticlib_1_1config.html">   38</a></span>&#160;<span class="keyword">namespace </span>config {</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno"><a class="code" href="classstaticlib_1_1config_1_1AssertException.html">   43</a></span>&#160;<span class="keyword">class </span><a class="code" href="classstaticlib_1_1config_1_1AssertException.html" title="Assert-specific exception.">AssertException</a> : <span class="keyword">public</span> <a class="code" href="classstaticlib_1_1config_1_1BaseException.html" title="Base exception class for business exceptions in staticlib modules.">BaseException</a> {</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="code" href="classstaticlib_1_1config_1_1assert__exception.html">   43</a></span>&#160;<span class="keyword">class </span><a class="code" href="classstaticlib_1_1config_1_1assert__exception.html" title="Assert-specific exception.">assert_exception</a> : <span class="keyword">public</span> std::runtime_error {</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <a class="code" href="classstaticlib_1_1config_1_1AssertException.html#ad7c0015c678a4184ed981ad9d554e45c" title="Default constructor.">AssertException</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00055"></a><span class="lineno"><a class="code" href="classstaticlib_1_1config_1_1AssertException.html#ac7fdc860f2a74b33e9e39e89a2fd6bcc">   55</a></span>&#160;    <a class="code" href="classstaticlib_1_1config_1_1AssertException.html#ad7c0015c678a4184ed981ad9d554e45c" title="Default constructor.">AssertException</a>(<span class="keyword">const</span> std::string&amp; msg) :</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <a class="code" href="classstaticlib_1_1config_1_1BaseException.html" title="Base exception class for business exceptions in staticlib modules.">BaseException</a>(msg) { }</div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="code" href="classstaticlib_1_1config_1_1assert__exception.html#aeb839084e1f14e9a1fd8e0373d21e3e3">   50</a></span>&#160;    <a class="code" href="classstaticlib_1_1config_1_1assert__exception.html#aeb839084e1f14e9a1fd8e0373d21e3e3" title="Constructor with message.">assert_exception</a>(<span class="keyword">const</span> std::string&amp; msg) :</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    std::runtime_error(msg) { }</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;};</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;};</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;}</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* STATICLIB_CONFIG_ASSERT_HPP */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment">// export namespace with shorter name, for use in tests</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keyword">namespace </span>sl = staticlib;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* STATICLIB_CONFIG_ASSERT_HPP */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Nov 23 2015 15:43:33 for staticlib_config by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Apr 8 2017 12:22:51 for staticlib_config by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

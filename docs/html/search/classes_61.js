@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['assertexception',['AssertException',['../classstaticlib_1_1config_1_1AssertException.html',1,'staticlib::config']]]
+  ['assert_5fexception',['assert_exception',['../classstaticlib_1_1config_1_1assert__exception.html',1,'staticlib::config']]]
 ];

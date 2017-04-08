@@ -1,6 +1,6 @@
 var searchData=
 [
   ['assert_2ehpp',['assert.hpp',['../assert_8hpp.html',1,'']]],
-  ['assertexception',['AssertException',['../classstaticlib_1_1config_1_1AssertException.html#ad7c0015c678a4184ed981ad9d554e45c',1,'staticlib::config::AssertException::AssertException()'],['../classstaticlib_1_1config_1_1AssertException.html#ac7fdc860f2a74b33e9e39e89a2fd6bcc',1,'staticlib::config::AssertException::AssertException(const std::string &amp;msg)']]],
-  ['assertexception',['AssertException',['../classstaticlib_1_1config_1_1AssertException.html',1,'staticlib::config']]]
+  ['assert_5fexception',['assert_exception',['../classstaticlib_1_1config_1_1assert__exception.html#aeb839084e1f14e9a1fd8e0373d21e3e3',1,'staticlib::config::assert_exception']]],
+  ['assert_5fexception',['assert_exception',['../classstaticlib_1_1config_1_1assert__exception.html',1,'staticlib::config']]]
 ];
