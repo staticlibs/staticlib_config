@@ -3,8 +3,7 @@ Staticlibs Config headers library
 
 This project is a part of [Staticlibs](http://staticlibs.net/).
 
-This project contains a number of headers to detect operating system and to 
-add features missed on some platforms.
+This project contains a number of helper macros (detect operating system etc).
 
 This library is header-only and has no dependencies.
 
@@ -32,22 +31,6 @@ Defines `STATICLIB_<OS_NAME>` macro, where OS_NAME is one of:
 Defines `STATICLIB_NOEXCEPT` and `STATICLIB_NOEXCEPT_FALSE` with `noexcept` and `noexcept(false)`
 corresponding values on all supported compilers except MSVC 2013 where these macros are empty.
 
-####to_string macro
-
-Implements `to_string` template that calls `std::to_string` on all supported platforms except Android, 
-where `std::to_string` is missed for some versions of NDK. `std::stringstream` implementation
-is used for Android.
-
-####defer template
-
-Implements a lambda function holder, that will execute specified lambda on destruction.
-
-####BaseException
-
-Exception class that extends `std::exception` and implements constructor that takes `std::string`
-and `what` method that returns that string. All module-specific exception classed in Staticlibs 
-extends `BaseException`.
-
 ####Current function macro
 
 `STATICLIB_CURRENT_FUNCTION` macro (borrowed from Boost) that extracts compiler-specific
@@ -65,18 +48,6 @@ Multiple "traced" messages can be combined together to look similar to Java stac
 
     #include "staticlib/config/assert.hpp"
 
-####optional
-
-Basic implementation of `optional` template [from C++17](http://en.cppreference.com/w/cpp/utility/optional).
-
-####observer_ptr
-
-Basic implementation of non-owning pointer template.
-
-####span
-
-Basic implementation of `span` template [from GSL](https://github.com/Microsoft/GSL/blob/96eaf274f8c57829080100f7cd1d2e7744bae1ae/gsl/span).
-
 License information
 -------------------
 
@@ -84,6 +55,11 @@ This project is released under the [Apache License 2.0](http://www.apache.org/li
 
 Changelog
 ---------
+
+**2017-04-08**
+
+ * version 1.1.0
+ * non-macros moved to [staticlib_support](https://github.com/staticlibs/staticlib_support)
 
 **2017-02-04**
 

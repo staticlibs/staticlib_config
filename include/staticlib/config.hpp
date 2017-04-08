@@ -24,7 +24,6 @@
 #ifndef STATICLIB_CONFIG_HPP
 #define	STATICLIB_CONFIG_HPP
 
-#include "staticlib/config/assert.hpp"
 #include "staticlib/config/current_function.hpp"
 #include "staticlib/config/noexcept.hpp"
 #include "staticlib/config/os.hpp"

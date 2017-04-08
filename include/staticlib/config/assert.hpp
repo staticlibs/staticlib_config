@@ -55,5 +55,8 @@ public:
 }
 }
 
+// export namespace with shorter name, for use in tests
+namespace sl = staticlib;
+
 #endif	/* STATICLIB_CONFIG_ASSERT_HPP */
 
