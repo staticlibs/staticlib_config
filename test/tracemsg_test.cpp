@@ -24,9 +24,8 @@
 #include "staticlib/config/tracemsg.hpp"
 
 #include <iostream>
+#include <sstream>
 #include <string>
-
-#include <limits>
 
 #include "staticlib/config/assert.hpp"
 
@@ -35,21 +34,23 @@ namespace sl = staticlib;
 namespace myfancynamespace {
 
 void test() {
-    //auto line = __LINE__;
+    auto line = __LINE__;
     auto msg = TRACEMSG("foo");
+    std::stringstream ss;
+    ss << (line + 1);
     auto expected = std::string("foo\n") 
             .append("    at myfancynamespace::test(tracemsg_test.cpp:")
-//            .append(ss::to_string(line + 1))
+            .append(ss.str())
             .append(")");
-//    slassert(expected == msg);
-    std::cout << msg << std::endl;
+    slassert(expected == msg);
+    // std::cout << msg << std::endl;
 }
 
 namespace { //anonymous
 
 void test_anon() {
     auto msg = TRACEMSG("foo");
-    std::cout << msg << std::endl;
+    // std::cout << msg << std::endl;
 }
 
 } // namespace
@@ -57,7 +58,7 @@ void test_anon() {
 template<typename T>
 void test_template() {
     auto msg = TRACEMSG("foo");
-    std::cout << msg << std::endl;
+    // std::cout << msg << std::endl;
 }
 
 template<typename T>
@@ -65,7 +66,7 @@ class test_template_class {
 public:
     void run() {
         auto msg = TRACEMSG("foo");
-        std::cout << msg << std::endl;
+        // std::cout << msg << std::endl;
     }
 };
 

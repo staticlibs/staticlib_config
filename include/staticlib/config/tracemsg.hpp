@@ -24,8 +24,8 @@
 #ifndef STATICLIB_CONFIG_TRACEMSG_HPP
 #define	STATICLIB_CONFIG_TRACEMSG_HPP
 
-#include <cstdio>
 #include <limits>
+#include <sstream>
 #include <string>
 
 #include "staticlib/config/current_function.hpp"
@@ -64,9 +64,8 @@ inline std::string tracemsg(const std::string& message, const std::string& file,
         }
     }
     // to_string moved to sl::support
-    std::string linestr;
-    linestr.resize(std::numeric_limits<int>::digits10);
-    std::snprintf(std::addressof(linestr.front()), linestr.length(), "%d", line);
+    std::stringstream linest;
+    linest << line;
     // format message
     return std::string()
             .append(message)
@@ -75,7 +74,7 @@ inline std::string tracemsg(const std::string& message, const std::string& file,
             .append("(")
             .append(file, filename_start_pos, file.length() - filename_start_pos)
             .append(":")
-            .append(linestr)
+            .append(linest.str())
             .append(")");
 }
 

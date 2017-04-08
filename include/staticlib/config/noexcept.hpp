@@ -40,6 +40,7 @@
 #endif // _MSC_VER
 # if !defined(STATICLIB_NOEXCEPT)
 #  define STATICLIB_NOEXCEPT
+#  define STATICLIB_NOEXCEPT_FALSE
 #endif //!defined(STATICLIB_NOEXCEPT)
 
 
