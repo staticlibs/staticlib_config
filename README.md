@@ -16,7 +16,7 @@ Library include:
 
     #include "staticlib/config.hpp"
 
-####OS detection
+#### OS detection ####
 
 Defines `STATICLIB_<OS_NAME>` macro, where OS_NAME is one of:
 
@@ -26,22 +26,22 @@ Defines `STATICLIB_<OS_NAME>` macro, where OS_NAME is one of:
  - `ANDROID`
  - `LINUX`
 
-####noexcept macros
+#### noexcept macros ####
 
 Defines `STATICLIB_NOEXCEPT` and `STATICLIB_NOEXCEPT_FALSE` with `noexcept` and `noexcept(false)`
 corresponding values on all supported compilers except MSVC 2013 where these macros are empty.
 
-####Current function macro
+#### Current function macro ####
 
 `STATICLIB_CURRENT_FUNCTION` macro (borrowed from Boost) that extracts compiler-specific
 name of the current function.
 
-####TRACEMSG
+#### TRACEMSG ####
 
 `TRACEMSG` macro takes a message and adds to it a file location information and function name.
 Multiple "traced" messages can be combined together to look similar to Java stacktraces.
 
-####Assert macro for tests
+#### Assert macro for tests ####
 
 `slassert` macro that works similar to `<cassert>` one, but throws `sl::config::assert_exception` with
 `TRACEMSG` tracing instead of calling `std::abort`. This macro is not included with `config.hpp`, use:
