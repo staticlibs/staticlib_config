@@ -1,5 +1,5 @@
-Staticlibs Config headers library
-=================================
+Staticlibs Config macros
+========================
 
 This project is a part of [Staticlibs](http://staticlibs.net/).
 
@@ -43,7 +43,7 @@ Multiple "traced" messages can be combined together to look similar to Java stac
 
 ####Assert macro for tests
 
-`slassert` macro that works similar to `<cassert>` one, but throws `AssertException` with
+`slassert` macro that works similar to `<cassert>` one, but throws `sl::config::assert_exception` with
 `TRACEMSG` tracing instead of calling `std::abort`. This macro is not included with `config.hpp`, use:
 
     #include "staticlib/config/assert.hpp"
