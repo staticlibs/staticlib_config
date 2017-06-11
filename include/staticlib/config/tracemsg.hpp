@@ -25,11 +25,14 @@
 #define	STATICLIB_CONFIG_TRACEMSG_HPP
 
 #include <limits>
-#include <sstream>
 #include <string>
 
 #include "staticlib/config/current_function.hpp"
 #include "staticlib/config/os.hpp"
+
+#ifdef STATICLIB_ANDROID
+#include <sstream>
+#endif // STATICLIB_ANDROID
 
 #define TRACEMSG(message) staticlib::config::tracemsg(std::string() + message, __FILE__, STATICLIB_CURRENT_FUNCTION, __LINE__)
 
@@ -64,8 +67,13 @@ inline std::string tracemsg(const std::string& message, const std::string& file,
         }
     }
     // to_string moved to sl::support
-    std::stringstream linest;
-    linest << line;
+#ifdef STATICLIB_ANDROID    
+    std::stringstream linestream;
+    linestream << line;
+    std::string linest = linestream.str();
+#else //!STATICLIB_ANDROID
+    std::string linest = std::to_string(line);
+#endif // STATICLIB_ANDROID    
     // format message
     return std::string()
             .append(message)
@@ -74,7 +82,7 @@ inline std::string tracemsg(const std::string& message, const std::string& file,
             .append("(")
             .append(file, filename_start_pos, file.length() - filename_start_pos)
             .append(":")
-            .append(linest.str())
+            .append(linest)
             .append(")");
 }
 
