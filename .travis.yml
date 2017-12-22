@@ -20,17 +20,15 @@ os:
   - linux
   - osx
 
-compiler:
-  - gcc
-  - clang
-
 script:
-  - git clone https://github.com/staticlibs/cmake.git ../cmake
+  - pushd ..
+  - git clone https://github.com/staticlibs/cmake.git cmake
+  - popd
   - mkdir build
   - cd build
   - cmake ../test
-  - make
-  - make test
+  - cmake --build .
+  - ctest
 
 notifications:
   email:
