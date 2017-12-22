@@ -13,11 +13,11 @@
 # limitations under the License.
 
 environment:
-matrix:
-  - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2013
-    SL_CMAKE_VS: 12 2013
-  - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
-    SL_CMAKE_VS: 14 2015
+  matrix:
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2013
+      SL_CMAKE_VS: 12 2013
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      SL_CMAKE_VS: 14 2015
 
 clone_folder: c:\projects\staticlib_config
 
