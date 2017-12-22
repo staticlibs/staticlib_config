@@ -15,7 +15,7 @@
 image:
   - Visual Studio 2013
 
-configuration: Release
+clone_folder: c:\projects\staticlib_config
 
 build: off
 
