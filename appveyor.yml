@@ -23,6 +23,6 @@ build_script:
   - git clone https://github.com/staticlibs/cmake.git "../cmake"
   - mkdir build
   - cd build
-  - cmake ../test
+  - cmake ../test -DSTATICLIB_TOOLCHAIN=windows_i386_msvc
   - cmake --build .
   - ctest
