@@ -31,17 +31,6 @@ install:
 build: off
 
 build_script:
-# i386
-  - mkdir build
-  - cd build
-  - cmake ../test -G "Visual Studio %SL_CMAKE_VS%" -DSTATICLIB_TOOLCHAIN=windows_i386_msvc -DCMAKE_BUILD_TYPE=Release -T v120_xp
-  - cmake --build . --config Release
-  - ctest
-
-# cleanup
-  - cd ..
-  - rd /s /q build
-
 # amd64
   - mkdir build
   - cd build
