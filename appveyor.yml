@@ -20,9 +20,7 @@ configuration: Release
 build: off
 
 build_script:
-  - pushd ..
-  - git clone https://github.com/staticlibs/cmake.git cmake
-  - popd
+  - git clone https://github.com/staticlibs/cmake.git "../cmake"
   - mkdir build
   - cd build
   - cmake ../test
