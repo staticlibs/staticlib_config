@@ -17,10 +17,14 @@ image:
 
 clone_folder: c:\projects\staticlib_config
 
+install:
+  - git clone https://github.com/staticlibs/cmake.git "../cmake"
+  - git clone https://github.com/staticlibs/tools_windows_pkgconfig.git "../pkgconfig"
+  - set PATH=%PATH%;c:\projects\pkgconfig\bin
+
 build: off
 
 build_script:
-  - git clone https://github.com/staticlibs/cmake.git "../cmake"
   - mkdir build
   - cd build
   - cmake ../test -DSTATICLIB_TOOLCHAIN=windows_i386_msvc
