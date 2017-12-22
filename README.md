@@ -59,7 +59,7 @@ This project is released under the [Apache License 2.0](http://www.apache.org/li
 Changelog
 ---------
 
-**2017-12-2**
+**2017-12-22**
 
  * version 1.1.1
  * vs2017 support
