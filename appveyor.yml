@@ -12,8 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-image:
-  - Visual Studio 2013
+environment:
+matrix:
+  - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2013
+    SL_CMAKE_VS: 12 2013
+  - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    SL_CMAKE_VS: 14 2015
 
 clone_folder: c:\projects\staticlib_config
 
@@ -28,14 +32,14 @@ build_script:
 # i386
   - mkdir build
   - cd build
-  - cmake ../test -G "Visual Studio 12 2013" -DSTATICLIB_TOOLCHAIN=windows_i386_msvc -DCMAKE_BUILD_TYPE=Release -T v120_xp
-  - cmake --build .
+  - cmake ../test -G "Visual Studio %SL_CMAKE_VS%" -DSTATICLIB_TOOLCHAIN=windows_i386_msvc -DCMAKE_BUILD_TYPE=Release -T v120_xp
+  - cmake --build . --config Release
   - ctest
   - cd ..
 
 # amd64
   - rd /s /q build
   - cd build
-  - cmake ../test -G "Visual Studio 12 2013 Win64" -DSTATICLIB_TOOLCHAIN=windows_amd64_msvc -DCMAKE_BUILD_TYPE=Release
-  - cmake --build .
+  - cmake ../test -G "Visual Studio %SL_CMAKE_VS% Win64" -DSTATICLIB_TOOLCHAIN=windows_amd64_msvc -DCMAKE_BUILD_TYPE=Release
+  - cmake --build . --config Release
   - ctest
