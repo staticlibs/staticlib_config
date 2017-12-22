@@ -35,10 +35,13 @@ build_script:
   - cmake ../test -G "Visual Studio %SL_CMAKE_VS%" -DSTATICLIB_TOOLCHAIN=windows_i386_msvc -DCMAKE_BUILD_TYPE=Release -T v120_xp
   - cmake --build . --config Release
   - ctest
+
+# cleanup
   - cd ..
+  - rd /s /q build
 
 # amd64
-  - rd /s /q build
+  - mkdir build
   - cd build
   - cmake ../test -G "Visual Studio %SL_CMAKE_VS% Win64" -DSTATICLIB_TOOLCHAIN=windows_amd64_msvc -DCMAKE_BUILD_TYPE=Release
   - cmake --build . --config Release
