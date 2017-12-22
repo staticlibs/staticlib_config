@@ -21,12 +21,17 @@ os:
   - osx
 
 script:
-  - pushd ..
-  - git clone https://github.com/staticlibs/cmake.git cmake
-  - popd
+# toolchain detect
+  - SL_TOOLCHAIN=linux_amd64_gcc
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then SL_TOOLCHAIN=macosx_amd64_clang ; fi
+
+# deps
+  - git clone https://github.com/staticlibs/cmake.git "../cmake"
+
+# build
   - mkdir build
   - cd build
-  - cmake ../test
+  - cmake ../test -DSTATICLIB_TOOLCHAIN=$SL_TOOLCHAIN -DCMAKE_BUILD_TYPE=Release
   - cmake --build .
   - ctest
 
