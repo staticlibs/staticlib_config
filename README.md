@@ -1,6 +1,9 @@
 Staticlibs Config macros
 ========================
 
+[![travis](https://travis-ci.org/staticlibs/staticlib_config.svg?branch=master)](https://travis-ci.org/staticlibs/staticlib_config)
+[![appveyor](https://ci.appveyor.com/api/projects/status/github/staticlibs/staticlib_config?svg=true)](https://ci.appveyor.com/project/staticlibs/staticlib_config)
+
 This project is a part of [Staticlibs](http://staticlibs.net/).
 
 This project contains a number of helper macros (detect operating system etc).

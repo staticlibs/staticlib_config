@@ -24,14 +24,15 @@ environment:
 clone_folder: c:\projects\staticlib_config
 
 install:
-  - git clone https://github.com/staticlibs/cmake.git "../cmake"
+# tools
   - git clone https://github.com/staticlibs/tools_windows_pkgconfig.git "../pkgconfig"
   - set PATH=%PATH%;c:\projects\pkgconfig\bin
+# cmake
+  - git clone https://github.com/staticlibs/cmake.git "../cmake"
 
 build: off
 
 build_script:
-# amd64
   - mkdir build
   - cd build
   - cmake ../test -G "Visual Studio %SL_CMAKE_VS% Win64" -DSTATICLIB_TOOLCHAIN=windows_amd64_msvc -DCMAKE_BUILD_TYPE=Release

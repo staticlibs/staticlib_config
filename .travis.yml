@@ -25,16 +25,16 @@ script:
   - SL_TOOLCHAIN=linux_amd64_gcc
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then SL_TOOLCHAIN=macosx_amd64_clang ; fi
   - echo $SL_TOOLCHAIN
-
+  - export CC=
+  - export CXX=
 # deps
   - git clone https://github.com/staticlibs/cmake.git "../cmake"
-
 # build
   - mkdir build
   - cd build
   - cmake ../test -DSTATICLIB_TOOLCHAIN=$SL_TOOLCHAIN -DCMAKE_BUILD_TYPE=Release
-  - cmake --build .
-  - ctest
+  - make
+  - make test
 
 notifications:
   email:
