@@ -25,8 +25,17 @@ install:
 build: off
 
 build_script:
+# i386
   - mkdir build
   - cd build
-  - cmake ../test -DSTATICLIB_TOOLCHAIN=windows_i386_msvc
+  - cmake ../test -G "Visual Studio 12 2013" -DSTATICLIB_TOOLCHAIN=windows_i386_msvc -DCMAKE_BUILD_TYPE=Release -T v120_xp
+  - cmake --build .
+  - ctest
+  - cd ..
+
+# amd64
+  - rd /s /q build
+  - cd build
+  - cmake ../test -G "Visual Studio 12 2013 Win64" -DSTATICLIB_TOOLCHAIN=windows_amd64_msvc -DCMAKE_BUILD_TYPE=Release
   - cmake --build .
   - ctest
