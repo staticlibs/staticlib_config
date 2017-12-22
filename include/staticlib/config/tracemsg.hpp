@@ -22,7 +22,7 @@
  */
 
 #ifndef STATICLIB_CONFIG_TRACEMSG_HPP
-#define	STATICLIB_CONFIG_TRACEMSG_HPP
+#define STATICLIB_CONFIG_TRACEMSG_HPP
 
 #include <limits>
 #include <string>
@@ -89,4 +89,4 @@ inline std::string tracemsg(const std::string& message, const std::string& file,
 } //namespace
 }
 
-#endif	/* STATICLIB_CONFIG_TRACEMSG_HPP */
+#endif /* STATICLIB_CONFIG_TRACEMSG_HPP */

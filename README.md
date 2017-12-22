@@ -2,7 +2,7 @@ Staticlibs Config macros
 ========================
 
 [![travis](https://travis-ci.org/staticlibs/staticlib_config.svg?branch=master)](https://travis-ci.org/staticlibs/staticlib_config)
-[![appveyor](https://ci.appveyor.com/api/projects/status/github/staticlibs/staticlib_config?svg=true)](https://ci.appveyor.com/project/staticlibs/staticlib_config)
+[![appveyor](https://ci.appveyor.com/api/projects/status/github/staticlibs/staticlib_config?svg=true)](https://ci.appveyor.com/project/staticlibs/staticlib-config)
 
 This project is a part of [Staticlibs](http://staticlibs.net/).
 
@@ -58,6 +58,11 @@ This project is released under the [Apache License 2.0](http://www.apache.org/li
 
 Changelog
 ---------
+
+**2017-12-2**
+
+ * version 1.1.1
+ * vs2017 support
 
 **2017-04-08**
 

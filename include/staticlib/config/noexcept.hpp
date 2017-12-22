@@ -22,7 +22,7 @@
  */
 
 #ifndef STATICLIB_CONFIG_NOEXCEPT_HPP
-#define	STATICLIB_CONFIG_NOEXCEPT_HPP
+#define STATICLIB_CONFIG_NOEXCEPT_HPP
 
 // http://stackoverflow.com/a/18387764/314015
 // Compliant C++11 compilers put noexcept specifiers on error_category
@@ -44,4 +44,4 @@
 #endif //!defined(STATICLIB_NOEXCEPT)
 
 
-#endif	/* STATICLIB_CONFIG_NOEXCEPT_HPP */
+#endif /* STATICLIB_CONFIG_NOEXCEPT_HPP */

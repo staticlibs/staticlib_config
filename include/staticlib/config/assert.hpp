@@ -22,10 +22,10 @@
  */
 
 #ifndef STATICLIB_CONFIG_ASSERT_HPP
-#define	STATICLIB_CONFIG_ASSERT_HPP
+#define STATICLIB_CONFIG_ASSERT_HPP
 
-#include <string>
 #include <stdexcept>
+#include <string>
 
 #include "staticlib/config/tracemsg.hpp"
 
@@ -52,11 +52,11 @@ public:
 
 };
 
-}
+} // namespace
 }
 
 // export namespace with shorter name, for use in tests
 namespace sl = staticlib;
 
-#endif	/* STATICLIB_CONFIG_ASSERT_HPP */
+#endif /* STATICLIB_CONFIG_ASSERT_HPP */
 

@@ -22,7 +22,7 @@
  */
 
 #ifndef STATICLIB_CONFIG_OS_HPP
-#define	STATICLIB_CONFIG_OS_HPP
+#define STATICLIB_CONFIG_OS_HPP
 
 // http://stackoverflow.com/a/5920028/314015
 #ifdef _WIN32
@@ -42,4 +42,4 @@
 #define STATICLIB_LINUX
 #endif
 
-#endif	/* STATICLIB_CONFIG_OS_HPP */
+#endif /* STATICLIB_CONFIG_OS_HPP */

@@ -22,7 +22,7 @@
  */
 
 #ifndef STATICLIB_CONFIG_HPP
-#define	STATICLIB_CONFIG_HPP
+#define STATICLIB_CONFIG_HPP
 
 #include "staticlib/config/current_function.hpp"
 #include "staticlib/config/noexcept.hpp"
@@ -32,5 +32,5 @@
 // export namespace with shorter name
 namespace sl = staticlib;
 
-#endif	/* STATICLIB_CONFIG_HPP */
+#endif /* STATICLIB_CONFIG_HPP */
 

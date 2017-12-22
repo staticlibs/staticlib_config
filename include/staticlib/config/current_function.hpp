@@ -22,7 +22,7 @@
  */
 
 #ifndef STATICLIB_CONFIG_CURRENT_FUNCTION_HPP
-#define	STATICLIB_CONFIG_CURRENT_FUNCTION_HPP
+#define STATICLIB_CONFIG_CURRENT_FUNCTION_HPP
 
 // https://github.com/boostorg/assert/blob/94ebde8bcff31752b7ffe7fcd58ad4d783bf958c/include/boost/current_function.hpp
 #if defined(__GNUC__) || (defined(__MWERKS__) && (__MWERKS__ >= 0x3000)) || (defined(__ICC) && (__ICC >= 600)) || defined(__ghs__)
@@ -43,4 +43,4 @@
 #define STATICLIB_CURRENT_FUNCTION "(unknown)"
 #endif
 
-#endif	/* STATICLIB_CONFIG_CURRENT_FUNCTION_HPP */
+#endif /* STATICLIB_CONFIG_CURRENT_FUNCTION_HPP */
