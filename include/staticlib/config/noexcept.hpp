@@ -33,7 +33,7 @@
 #  define STATICLIB_NOEXCEPT_SUPPORTED
 #else
 #  if (_MSC_VER >= 1900)
-#    define STATICLIB_NOEXCEPT noexcept(true)
+#    define STATICLIB_NOEXCEPT noexcept
 #    define STATICLIB_NOEXCEPT_FALSE noexcept(false)
 #    define STATICLIB_NOEXCEPT_SUPPORTED
 #  endif //(_MSC_VER >= 1900)

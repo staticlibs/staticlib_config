@@ -27,11 +27,6 @@ if ( ${PROJECT_NAME}_ENABLE_DOCS )
     return ( )
 endif ( )
 
-# standalone build
-if ( NOT DEFINED CMAKE_LIBRARY_OUTPUT_DIRECTORY )
-    set ( CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR} )
-endif ( )
-
 # target
 file ( GLOB_RECURSE ${PROJECT_NAME}_HEADERS ${CMAKE_CURRENT_LIST_DIR}/include/*.hpp )
 source_group ( "include" FILES ${${PROJECT_NAME}_HEADERS} )

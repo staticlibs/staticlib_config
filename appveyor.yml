@@ -16,25 +16,34 @@ environment:
   matrix:
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2013
       SL_CMAKE_VS: 12 2013
-    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
-      SL_CMAKE_VS: 14 2015
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
       SL_CMAKE_VS: 15 2017
 
 clone_folder: c:\projects\staticlib_config
 
 install:
-# tools
-  - git clone https://github.com/staticlibs/tools_windows_pkgconfig.git "../pkgconfig"
-  - set PATH=%PATH%;c:\projects\pkgconfig\bin
-# cmake
-  - git clone https://github.com/staticlibs/cmake.git "../cmake"
+  - cd ..
+  - git clone https://github.com/staticlibs/tools_windows_pkgconfig.git
+  - set PATH=%PATH%;c:\projects\tools_windows_pkgconfig\bin
+  - git clone https://github.com/staticlibs/cmake.git
 
 build: off
 
 build_script:
-  - mkdir build
-  - cd build
-  - cmake ../test -G "Visual Studio %SL_CMAKE_VS% Win64" -DSTATICLIB_TOOLCHAIN=windows_amd64_msvc -DCMAKE_BUILD_TYPE=Release
+  - mkdir build_i386
+  - cd build_i386
+  - cmake ../staticlib_config/test
+        -G "Visual Studio %SL_CMAKE_VS%"
+        -DSTATICLIB_TOOLCHAIN=windows_i386_msvc
+        -DCMAKE_BUILD_TYPE=Release
+  - cmake --build . --config Release
+  - ctest
+  - cd ..
+  - mkdir build_amd64
+  - cd build_amd64
+  - cmake ../staticlib_config/test
+        -G "Visual Studio %SL_CMAKE_VS% Win64"
+        -DSTATICLIB_TOOLCHAIN=windows_amd64_msvc
+        -DCMAKE_BUILD_TYPE=Release
   - cmake --build . --config Release
   - ctest

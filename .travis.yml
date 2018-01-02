@@ -14,27 +14,85 @@
 
 language: cpp
 
-sudo: false
+sudo: required
+
+services:
+  - docker
 
 os:
   - linux
   - osx
 
-script:
-# toolchain detect
-  - SL_TOOLCHAIN=linux_amd64_gcc
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then SL_TOOLCHAIN=macosx_amd64_clang ; fi
-  - echo $SL_TOOLCHAIN
+before_install:
   - export CC=
   - export CXX=
-# deps
-  - git clone https://github.com/staticlibs/cmake.git "../cmake"
-# build
+  - export D="docker exec fedora"
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
+    docker pull fedora ;
+    docker run -id --name fedora -v `pwd`/..:/src -w=/root fedora bash ;
+    fi
+
+install:
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then 
+
+    `# Ubuntu` ;
+    sudo apt-get -y install
+        g++
+        pkg-config
+        cmake
+        make
+        valgrind ; 
+
+    `# Fedora` ;
+    $D dnf install -y
+        gcc-c++
+        pkg-config
+        cmake
+        make
+        valgrind ;
+
+    `# Android` ;
+    git clone https://github.com/staticlibs/android-ndk-r9d-arm-linux-androideabi-4.8.git ../android-ndk ;
+
+    fi
+
+before_script:
+  - cd ..
+  - git clone https://github.com/staticlibs/cmake.git
+
+script:
   - mkdir build
   - cd build
-  - cmake ../test -DSTATICLIB_TOOLCHAIN=$SL_TOOLCHAIN -DCMAKE_BUILD_TYPE=Release
-  - make
-  - make test
+
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+
+    `# macOS` ;
+    cmake ../staticlib_config/test -DSTATICLIB_TOOLCHAIN=macosx_amd64_clang -DCMAKE_BUILD_TYPE=Release ;
+    make all test ;
+
+    fi
+
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
+    set -e ;
+
+    `# Ubuntu` ;
+    lsb_release -a ;
+    cmake ../staticlib_config/test -DCMAKE_BUILD_TYPE=Release ;
+    make all test ;
+
+    `# Fedora` ;
+    $D cat /etc/fedora-release ;
+    $D cmake /src/staticlib_config/test -DCMAKE_BUILD_TYPE=Release ;
+    $D make all test ;
+
+    `# Android` ;
+    cd .. ;
+    mkdir build-android ;
+    cd build-android ;
+    cmake ../staticlib_config/test -DCMAKE_BUILD_TYPE=Release -DSTATICLIB_TOOLCHAIN=android_armeabi_gcc -DANDROID_TOOLCHAIN_DIR=`pwd`/../android-ndk ;
+    make ;
+
+    fi
 
 notifications:
   email:
